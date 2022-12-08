@@ -18,6 +18,22 @@ console.log(messageEl)
 
 /*-------------------------------- Functions --------------------------------*/
 
+
+const init = function(){
+  board = [null, null, null, null, null, null, null, null, null]
+  turn = 1
+  winner = false
+  tie = false
+  render()
+}
+
+const render = function(){
+  console.log('BAM! Rendered')
+}
+
+init()
+
+
 //! Step by Step directions below. 
 //TODO Cross off when complete 
 //todo// Step 1 - Define the required variables used to track the state of the game
@@ -44,20 +60,20 @@ console.log(messageEl)
 //todo Step 3 - Upon loading, the game state should be initialized, and a function 
 //          should be called to render this game state.
 
-  // 3a) Create a function called `init`.
+  //// 3a) Create a function called `init`.
 
-  // 3b) Call this `init` function when the app loads.
+  //// 3b) Call this `init` function when the app loads.
   
-  // 3c) Set the `board` variable to an array containing nine `null`s to 
-  //    represent empty squares.
+  //// 3c) Set the `board` variable to an array containing nine `null`s to 
+  ////    represent empty squares.
 
-  // 3d) Set the `turn` to `1` - which will represent player X.
+  //// 3d) Set the `turn` to `1` - which will represent player X.
 
-  // 3e) Set the `winner` to false.
+  //// 3e) Set the `winner` to false.
 
-  // 3f) Set `tie` to false.
+  //// 3f) Set `tie` to false.
 
-  // 3g) Call a function called `render` at the end of the `init` function.
+  //// 3g) Call a function called `render` at the end of the `init` function.
 
 
 //TODO Step 4 - The state of the game should be rendered to the user
