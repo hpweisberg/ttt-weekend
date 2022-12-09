@@ -75,11 +75,20 @@ function handleClick(evt){
     }
     placePiece(sqIdx)
     console.dir(updateBoard(placePiece(sqIdx)))
+    checkForTie()
   }
 
   function placePiece(idx){
     board.splice(idx, 1, turn)
-    return board
+    // return board
+  }
+
+  function checkForTie(){
+    if (board.includes(null)){
+      tie === false
+    } else {
+      tie === true
+    }
   }
   render()
 
@@ -187,12 +196,12 @@ function handleClick(evt){
   ////       current value of `turn`.
 
 
-//todo 6.2 - `checkForTie`
+//todo// 6.2 - `checkForTie`
 
-  // 6.2a) Create a function named `checkForTie`.
+  //// 6.2a) Create a function named `checkForTie`.
 
-  // 6.2b) Check if the `board` array still contains any `null` elements. If
-  //       it does, we can leave `tie` as false. Otherwise, set `tie` to true.
+  //// 6.2b) Check if the `board` array still contains any `null` elements. If
+  ////       it does, we can leave `tie` as false. Otherwise, set `tie` to true.
 
 
 //todo 6.3 - `checkForWinner`
