@@ -74,8 +74,10 @@ function handleClick(evt){
       return
     }
     placePiece(sqIdx)
-    console.dir(updateBoard(placePiece(sqIdx)))
+    // console.dir(updateBoard(placePiece(sqIdx)))
+    updateBoard()
     checkForTie()
+    checkForWinner()
   }
 
   function placePiece(idx){
@@ -84,22 +86,39 @@ function handleClick(evt){
   }
 
   function checkForTie(){
-    console.log(board.includes(null))
     if (board.includes(null)){
       tie = false
     } else {
       tie = true
     }
-    console.log(tie)
   }
+//// loop through winningCombos
+// tally current board position (1 or -1) for earch winningCombos
+// if either === 3, winner!
+
 
   function checkForWinner(){
     for (let i = 0; i < winningCombos.length; i++) {
-      const element = array[i];
+      if (Math.abs(
+      board[winningCombos[i][0]]+
+      board[winningCombos[i][1]]+
+      board[winningCombos[i][2]]) === 3){
+        winner = true
+      }
+      // console.log(win)
       
-    }
-  }
+      
+      console.log(winner)
 
+      // board[winningCombos[i]]
+      // console.log(winningCombos[i])
+      // const win = math.abs(board[winningCombos[i]])
+      // const win = math.abs(winningCombos[i])
+      // win === 3
+    }
+    // console.log(win)
+  }
+  
   render()
 
 
@@ -109,18 +128,14 @@ function handleClick(evt){
 
 //todo 6.3 - `checkForWinner`
 
-  // 6.3a) Create a function called `checkForWinner`
+  //// 6.3a) Create a function called `checkForWinner`
 
   // 6.3b) Determine if a player has won using one of the two options below.
-  //       Option 1 is a more elegant method that takes advantage of the 
-  //       `winningCombos` array you wrote above in step 5. Option 2 might 
-  //       be a little simpler to comprehend, but you'll need to write more 
-  //       code. This option won't take advantage of the winningCombos array, 
-  //       but using it as a reference will help you build a solution.
-  //       Ensure you choose only one path.
 
-  //       Option 1) Loop through each of the winning combination arrays 
-  //       defined in the `winningCombos` array. Total up the three board 
+  ////       Option 1) Loop through each of the winning combination arrays 
+  ////       defined in the `winningCombos` array. 
+  //        
+  //      Total up the three board 
   //       positions using the three indexes in the current combo. Convert 
   //       the total to an absolute value (convert any negative total to 
   //       positive). If the total equals 3, we have a winner, and can set 
