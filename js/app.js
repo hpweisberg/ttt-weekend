@@ -29,21 +29,21 @@ squareEls.forEach(function(sqr){
   
   /*-------------------------------- Functions --------------------------------*/
   
-  const init = function(){
+  function init(){
     board = [1, -1, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
   }
   
-  const render = function(){
+  function render(){
     console.log('BAM! Rendered')
     init()
     updateMessage()
     updateBoard()
   }
   
-  const updateBoard = function(){
+  function updateBoard(){
     board.forEach((element, index) => {
       if (element === 1){
         squareEls[index].textContent = 'x'
@@ -53,7 +53,7 @@ squareEls.forEach(function(sqr){
     });
   }
   
-  const updateMessage = function(){
+  function updateMessage(){
     if (winner === false && tie === false){
       `It's ${turn}'s turn`
     } if(winner === false && tie === true){
@@ -62,9 +62,16 @@ squareEls.forEach(function(sqr){
       `Winner Winner Chicken Dinner! ${turn} Wins!`
     }
   }
+  // console.log(updateMessage())
   
-function handleClick (evt){
-  console.log('my click handling worked!')
+function handleClick(evt){
+  // console.log('my click handling worked!')
+  const sqIdx = evt.target.id.slice(2)
+    if (board[sqIdx] !== null){
+      return
+    }
+  
+  console.dir(board[sqIdx])
 }
 
   // const handleClick = function(evt){
@@ -153,15 +160,15 @@ function handleClick (evt){
 //// 6a) Create a function called `handleClick`. It will have an `evt`
   ////     parameter.
 
-  // 6b) Attach an event listener to the game board (you can do this to each
-  //     one of the existing `squareEls` with a `forEach` loop OR add a new
-  //     cached element reference that will allow you to take advantage of 
-  //     event bubbling). On the `'click'` event, it should call the 
-  //    `handleClick` function you created in 6a.
+  //// 6b) Attach an event listener to the game board (you can do this to each
+  ////     one of the existing `squareEls` with a `forEach` loop OR add a new
+  ////     cached element reference that will allow you to take advantage of 
+  ////     event bubbling). On the `'click'` event, it should call the 
+  ////    `handleClick` function you created in 6a.
 
-  // 6c) Obtain the index of the square that was clicked by "extracting" the 
-  //     index from an `id` assigned to the target element in the HTML. Assign 
-  //     this to a constant called `sqIdx`.
+  //// 6c) Obtain the index of the square that was clicked by "extracting" the 
+  // //    index from an `id` assigned to the target element in the HTML. Assign 
+  // //    this to a constant called `sqIdx`.
 
   // 6d) If the `board` has a value at the `sqIdx`, immediately `return`  
   //     because that square is already taken. Also, if `winner` is not `null`
