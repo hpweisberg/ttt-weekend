@@ -18,7 +18,7 @@ let board, turn, winner, tie
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
-const clickSqr = document.querySelectorAll('sqr')
+// const clickSqr = document.querySelectorAll('sqr')
 // console.log(messageEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -30,18 +30,17 @@ squareEls.forEach(function(sqr){
   /*-------------------------------- Functions --------------------------------*/
   
   function init(){
-    board = [1, -1, null, null, null, null, null, null, null]
+    board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
+    render()
   }
-  
+  init()
   function render(){
     console.log('BAM! Rendered')
-    init()
     updateMessage()
     updateBoard()
-    
   }
   
   function updateBoard(){
@@ -75,9 +74,11 @@ function handleClick(evt){
     }
     placePiece(sqIdx)
     // console.dir(updateBoard(placePiece(sqIdx)))
-    updateBoard()
+    // updateBoard()
     checkForTie()
     checkForWinner()
+    switchPlayerTurn()
+    render()
   }
 
   function placePiece(idx){
@@ -108,7 +109,7 @@ function handleClick(evt){
       // console.log(win)
       
       
-      console.log(winner)
+      // console.log(winner)
 
       // board[winningCombos[i]]
       // console.log(winningCombos[i])
@@ -119,6 +120,14 @@ function handleClick(evt){
     // console.log(win)
   }
   
+function switchPlayerTurn(){
+  if (winner === true){
+    return
+  } else {
+    turn *= -1
+  }
+}
+
   render()
 
 
