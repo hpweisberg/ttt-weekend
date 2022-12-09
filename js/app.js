@@ -10,7 +10,7 @@ let board, turn, winner, tie
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
-console.log(messageEl)
+// console.log(messageEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -24,16 +24,37 @@ const init = function(){
   turn = 1
   winner = false
   tie = false
-  render()
 }
 
 const render = function(){
   console.log('BAM! Rendered')
+  init()
+  updateMessage()
+  console.log(updateMessage())
 }
 
-init()
+const updateBoard = function(){
+  if (turn = 1){
+    board.forEach((element, index) => {
+      squareEls[index].textContent = 'x'
+    });
+    
+    }
+  }
+  
+  const updateMessage = function(){
+    if (winner === false && tie === false){
+      `It's ${turn}'s turn`
+    } if(winner === false && tie === true){
+      `It's a Tie`
+    } else {
+      `Winner Winner Chicken Dinner! ${turn} Wins!`
+    }
+  }
+  render()
+  updateBoard()
 
-
+// console.log(updateBoard())
 //! Step by Step directions below. 
 //TODO Cross off when complete 
 //todo// Step 1 - Define the required variables used to track the state of the game
@@ -57,8 +78,8 @@ init()
   ////    game's status on the page.
 
 
-//todo Step 3 - Upon loading, the game state should be initialized, and a function 
-//          should be called to render this game state.
+//todo// Step 3 - Upon loading, the game state should be initialized, and a function 
+//todo//          should be called to render this game state.
 
   //// 3a) Create a function called `init`.
 
@@ -78,9 +99,9 @@ init()
 
 //TODO Step 4 - The state of the game should be rendered to the user
 
-  // 4a) Create a function called `render`, then set it aside for now.
+  //// 4a) Create a function called `render`, then set it aside for now.
 
-  // 4b) Create a function called `updateBoard`.
+  //// 4b) Create a function called `updateBoard`.
 
   // 4c) In the `updateBoard` function, loop over `board` and for each element:
   //     - Use the current index of the iteration to access the corresponding 
@@ -200,4 +221,4 @@ init()
   //     a constant named `resetBtnEl`.
 
   // 7c) Attach an event listener to the `resetBtnEl`. On the `'click'` event 
-  //     it should call the `init` function you created in step 3.
+      // it should call the `init` function you created in step 3
