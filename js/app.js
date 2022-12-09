@@ -54,12 +54,18 @@ squareEls.forEach(function(sqr){
   }
   
   function updateMessage(){
+    let person = ''
+      if(turn === 1){
+        person = 'Player 1'
+      } else {
+        person = 'Player 2'
+      }
     if (winner === false && tie === false){
-      `It's ${turn}'s turn`
-    } if(winner === false && tie === true){
-      `It's a Tie`
+      messageEl.textContent = `It's ${person}'s turn`
+    } else if(winner === false && tie === true){
+      messageEl.textContent = `It's a Tie`
     } else {
-      `Winner Winner Chicken Dinner! ${turn} Wins!`
+      messageEl.textContent = `Winner Winner Chicken Dinner! ${person} Wins!`
     }
   }
   // console.log(updateMessage())
@@ -79,6 +85,7 @@ function handleClick(evt){
     checkForWinner()
     switchPlayerTurn()
     render()
+    console.log(init)
   }
 
   function placePiece(idx){
@@ -128,7 +135,6 @@ function switchPlayerTurn(){
   }
 }
 
-  render()
 
 
 //! Step by Step directions below. 
