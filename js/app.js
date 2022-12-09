@@ -41,6 +41,7 @@ squareEls.forEach(function(sqr){
     init()
     updateMessage()
     updateBoard()
+    
   }
   
   function updateBoard(){
@@ -69,16 +70,19 @@ function handleClick(evt){
   const sqIdx = evt.target.id.slice(2)
     if (board[sqIdx] !== null){
       return
+    } if (winner === true){
+      return
     }
-  
-  console.dir(board[sqIdx])
-}
+    placePiece(sqIdx)
+    console.dir(updateBoard(placePiece(sqIdx)))
+  }
 
-  // const handleClick = function(evt){
-  //   console.log('my click handling worked!')
-  // }
-
+  function placePiece(idx){
+    board.splice(idx, 1, turn)
+    return board
+  }
   render()
+
 
 //! Step by Step directions below. 
 //TODO Cross off when complete 
@@ -155,7 +159,7 @@ function handleClick(evt){
   ////     combinations as an array of arrays.
 
 
-//todo Step 6 - Handle a player clicking a square with a `handleClick` function
+//todo// Step 6 - Handle a player clicking a square with a `handleClick` function
 
 //// 6a) Create a function called `handleClick`. It will have an `evt`
   ////     parameter.
@@ -170,17 +174,17 @@ function handleClick(evt){
   // //    index from an `id` assigned to the target element in the HTML. Assign 
   // //    this to a constant called `sqIdx`.
 
-  // 6d) If the `board` has a value at the `sqIdx`, immediately `return`  
-  //     because that square is already taken. Also, if `winner` is not `null`
-  //     immediately `return` because the game is over.
+  //// 6d) If the `board` has a value at the `sqIdx`, immediately `return`  
+  ////     because that square is already taken. Also, if `winner` is not `null`
+  ////     immediately `return` because the game is over.
 
 
-//todo Step 6.1 - `placePiece`
+//todo// Step 6.1 - `placePiece`
 
-  // 6.1a) Create a function named placePiece that accepts an `idx` parameter.
+  //// 6.1a) Create a function named placePiece that accepts an `idx` parameter.
 
-  // 6.1b) Update the `board` array at the `idx` so that it is equal to the 
-  //       current value of `turn`.
+  //// 6.1b) Update the `board` array at the `idx` so that it is equal to the 
+  ////       current value of `turn`.
 
 
 //todo 6.2 - `checkForTie`
