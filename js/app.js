@@ -1,5 +1,14 @@
 /*-------------------------------- Constants --------------------------------*/
-
+const winningCombos = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8]
+  [2,4,6]
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -30,7 +39,7 @@ const render = function(){
   console.log('BAM! Rendered')
   init()
   updateMessage()
-  console.log(updateMessage())
+  updateBoard()
 }
 
 const updateBoard = function(){
@@ -43,18 +52,7 @@ const updateBoard = function(){
     });
   }
   
-  // if (turn === 1){
-  //   board.forEach((element, index) => {
-  //     squareEls[index].textContent = 'x'
-  //   });
-  //   }
-  // if (turn === -1){
-  //   board.forEach((element, index) => {
-  //     squareEls[index].textContent = 'o'
-  //   });
-  //   }
-  // }
-  
+
   const updateMessage = function(){
     if (winner === false && tie === false){
       `It's ${turn}'s turn`
@@ -65,9 +63,8 @@ const updateBoard = function(){
     }
   }
   render()
-  updateBoard()
 
-// console.log(updateBoard())
+
 //! Step by Step directions below. 
 //TODO Cross off when complete 
 //todo// Step 1 - Define the required variables used to track the state of the game
@@ -110,32 +107,32 @@ const updateBoard = function(){
   //// 3g) Call a function called `render` at the end of the `init` function.
 
 
-//TODO Step 4 - The state of the game should be rendered to the user
+//TODO// Step 4 - The state of the game should be rendered to the user
 
   //// 4a) Create a function called `render`, then set it aside for now.
 
   //// 4b) Create a function called `updateBoard`.
 
-  // 4c) In the `updateBoard` function, loop over `board` and for each element:
-  //     - Use the current index of the iteration to access the corresponding 
-  //       square in the `squareEls` array.
-  //     - Style that square however you wish, dependent on the value  
-  //       contained in the current cell being iterated over (`-1`, `1`, or
-  //       `null`). To keep it simple, start with just putting a letter in 
-  //       each square depending on what the the value of each cell is.
+  //// 4c) In the `updateBoard` function, loop over `board` and for each element:
+  ////     - Use the current index of the iteration to access the corresponding 
+  //  //     square in the `squareEls` array.
+  ////     - Style that square however you wish, dependent on the value  
+  ////       contained in the current cell being iterated over (`-1`, `1`, or
+  ////       `null`). To keep it simple, start with just putting a letter in 
+  // //      each square depending on what the the value of each cell is.
 
   //todo 4d) Create a function called `updateMessage`
   
-  // 4e) In the `updateMessage` function, render a message based on the 
-  //     current game state:
-  //     - If both `winner` and `tie` have a value of false (meaning the game 
-  //       is still in progress), render whose turn it is.
-  //     - If `winner` is false, but `tie` is true, render a tie message.
-  //     - Otherwise, render a congratulatory message to the player that has 
-  //       won.
+  //// 4e) In the `updateMessage` function, render a message based on the 
+  ////     current game state:
+  // //    - If both `winner` and `tie` have a value of false (meaning the game 
+  // //      is still in progress), render whose turn it is.
+  // //    - If `winner` is false, but `tie` is true, render a tie message.
+  // //    - Otherwise, render a congratulatory message to the player that has 
+  // //      won.
 
-  // 4f) Invoke both the `updateBoard` and the `updateMessage` functions
-  //     inside of your `render` function.
+  //// 4f) Invoke both the `updateBoard` and the `updateMessage` functions
+  ////     inside of your `render` function.
 
 //todo Step 5 - Define the required constants
 
