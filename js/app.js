@@ -6,10 +6,9 @@ const winningCombos = [
   [0,3,6],
   [1,4,7],
   [2,5,8],
-  [0,4,8]
-  [2,4,6]
+  [0,4,8],
+  [2,4,6],
 ]
-
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board, turn, winner, tie
@@ -19,40 +18,41 @@ let board, turn, winner, tie
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
+const clickSqr = document.querySelectorAll('sqr')
 // console.log(messageEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
-
-/*-------------------------------- Functions --------------------------------*/
-
-
-const init = function(){
-  board = [1, -1, null, null, null, null, null, null, null]
-  turn = 1
-  winner = false
-  tie = false
-}
-
-const render = function(){
-  console.log('BAM! Rendered')
-  init()
-  updateMessage()
-  updateBoard()
-}
-
-const updateBoard = function(){
+squareEls.forEach(function(sqr){
+  sqr.addEventListener('click', handleClick)
+})
+  
+  /*-------------------------------- Functions --------------------------------*/
+  
+  const init = function(){
+    board = [1, -1, null, null, null, null, null, null, null]
+    turn = 1
+    winner = false
+    tie = false
+  }
+  
+  const render = function(){
+    console.log('BAM! Rendered')
+    init()
+    updateMessage()
+    updateBoard()
+  }
+  
+  const updateBoard = function(){
     board.forEach((element, index) => {
       if (element === 1){
-      squareEls[index].textContent = 'x'
+        squareEls[index].textContent = 'x'
       }if (element === -1){
         squareEls[index].textContent = 'o'
       }
     });
   }
   
-
   const updateMessage = function(){
     if (winner === false && tie === false){
       `It's ${turn}'s turn`
@@ -62,8 +62,16 @@ const updateBoard = function(){
       `Winner Winner Chicken Dinner! ${turn} Wins!`
     }
   }
-  render()
+  
+function handleClick (evt){
+  console.log('my click handling worked!')
+}
 
+  // const handleClick = function(evt){
+  //   console.log('my click handling worked!')
+  // }
+
+  render()
 
 //! Step by Step directions below. 
 //TODO Cross off when complete 
@@ -121,7 +129,7 @@ const updateBoard = function(){
   ////       `null`). To keep it simple, start with just putting a letter in 
   // //      each square depending on what the the value of each cell is.
 
-  //todo 4d) Create a function called `updateMessage`
+  //todo// 4d) Create a function called `updateMessage`
   
   //// 4e) In the `updateMessage` function, render a message based on the 
   ////     current game state:
@@ -134,16 +142,16 @@ const updateBoard = function(){
   //// 4f) Invoke both the `updateBoard` and the `updateMessage` functions
   ////     inside of your `render` function.
 
-//todo Step 5 - Define the required constants
+//todo// Step 5 - Define the required constants
 
-  // 5a) In a constant called `winningCombos` define the eight possible winning 
-  //     combinations as an array of arrays.
+  //// 5a) In a constant called `winningCombos` define the eight possible winning 
+  ////     combinations as an array of arrays.
 
 
 //todo Step 6 - Handle a player clicking a square with a `handleClick` function
 
-  // 6a) Create a function called `handleClick`. It will have an `evt`
-  //     parameter.
+//// 6a) Create a function called `handleClick`. It will have an `evt`
+  ////     parameter.
 
   // 6b) Attach an event listener to the game board (you can do this to each
   //     one of the existing `squareEls` with a `forEach` loop OR add a new
