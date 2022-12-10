@@ -73,10 +73,8 @@ resetBtn.addEventListener('click', init)
       messageEl.textContent = `Winner Winner Chicken Dinner! ${person} Wins!`
     }
   }
-  // console.log(updateMessage())
   
 function handleClick(evt){
-  // console.log('my click handling worked!')
   const sqIdx = evt.target.id.slice(2)
     if (board[sqIdx] !== null){
       return
@@ -88,12 +86,10 @@ function handleClick(evt){
     checkForWinner()
     switchPlayerTurn()
     render()
-    // console.log(init)
   }
 
   function placePiece(idx){
     board.splice(idx, 1, turn)
-    // return board
   }
 
   function checkForTie(){
@@ -103,10 +99,6 @@ function handleClick(evt){
       tie = true
     }
   }
-//// loop through winningCombos
-// tally current board position (1 or -1) for earch winningCombos
-// if either === 3, winner!
-
 
   function checkForWinner(){
     for (let i = 0; i < winningCombos.length; i++) {
@@ -116,18 +108,7 @@ function handleClick(evt){
       board[winningCombos[i][2]]) === 3){
         winner = true
       }
-      // console.log(win)
-      
-      
-      // console.log(winner)
-
-      // board[winningCombos[i]]
-      // console.log(winningCombos[i])
-      // const win = math.abs(board[winningCombos[i]])
-      // const win = math.abs(winningCombos[i])
-      // win === 3
     }
-    // console.log(win)
   }
   
 function switchPlayerTurn(){
@@ -137,19 +118,3 @@ function switchPlayerTurn(){
     turn *= -1
   }
 }
-
-
-
-//! Step by Step directions below. 
-//TODO Cross off when complete 
-
-
-//todo Step 7 - Create Reset functionality
-
-  // 7a) Add a reset button to the HTML document.
-
-  // 7b) Store the new reset button element as a cached element reference in
-  //     a constant named `resetBtnEl`.
-
-  // 7c) Attach an event listener to the `resetBtnEl`. On the `'click'` event 
-      // it should call the `init` function you created in step 3
