@@ -18,7 +18,7 @@ let board, turn, winner, tie
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
-// const clickSqr = document.querySelectorAll('sqr')
+const resetBtn = document.getElementById('resetGame')
 // console.log(messageEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -26,9 +26,10 @@ const messageEl = document.getElementById('message')
 squareEls.forEach(function(sqr){
   sqr.addEventListener('click', handleClick)
 })
+resetBtn.addEventListener('click', init)
   
   /*-------------------------------- Functions --------------------------------*/
-  
+
   function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
@@ -36,7 +37,9 @@ squareEls.forEach(function(sqr){
     tie = false
     render()
   }
+
   init()
+  
   function render(){
     console.log('BAM! Rendered')
     updateMessage()
@@ -49,6 +52,8 @@ squareEls.forEach(function(sqr){
         squareEls[index].textContent = 'x'
       }if (element === -1){
         squareEls[index].textContent = 'o'
+      }if (element === null){
+        squareEls[index].textContent = ''
       }
     });
   }
@@ -79,13 +84,11 @@ function handleClick(evt){
       return
     }
     placePiece(sqIdx)
-    // console.dir(updateBoard(placePiece(sqIdx)))
-    // updateBoard()
     checkForTie()
     checkForWinner()
     switchPlayerTurn()
     render()
-    console.log(init)
+    // console.log(init)
   }
 
   function placePiece(idx){
@@ -140,49 +143,6 @@ function switchPlayerTurn(){
 //! Step by Step directions below. 
 //TODO Cross off when complete 
 
-
-//todo 6.3 - `checkForWinner`
-
-  //// 6.3a) Create a function called `checkForWinner`
-
-  // 6.3b) Determine if a player has won using one of the two options below.
-
-  ////       Option 1) Loop through each of the winning combination arrays 
-  ////       defined in the `winningCombos` array. 
-  //        
-  //      Total up the three board 
-  //       positions using the three indexes in the current combo. Convert 
-  //       the total to an absolute value (convert any negative total to 
-  //       positive). If the total equals 3, we have a winner, and can set 
-  //       `winner` to true.
-
-  //       Option 2) For each one of the winning combinations you wrote in 
-  //       step 5, find the total of each winning combination. Convert the 
-  //       total to an absolute value (convert any negative total to 
-  //       positive). If the total equals 3, we have a winner, and can set 
-  //       `winner` to true.
-
-
-//todo 6.4 - `switchPlayerTurn`
-
-  // 6.4a) Create a function called `switchPlayerTurn`.
-
-  // 6.4b) If `winner` is true, return out of the function - we don’t need 
-  //       to switch the turn anymore!
-
-  // 6.4c) If `winner` is false, change the turn by multiplying `turn` by 
-  //       `-1` (this flips a `1` to `-1`, and vice-versa).
-
-
-//todo 6.5 - Tying it all together
-
-  // 6.5a) In our `handleClick` function, call `placePiece`, `checkForTie`, 
-  //       `checkForWinner`, and `switchPlayerTurn`. Don’t forget that 
-  //       `placePiece` needs `sqIdx` as an argument! 
-
-  // 6.5b) Finally, now that all the state has been updated we need to 
-  //       render that updated state to the user by calling the `render` 
-  //       function that we wrote earlier.
 
 //todo Step 7 - Create Reset functionality
 
