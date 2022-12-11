@@ -49,9 +49,9 @@ resetBtn.addEventListener('click', init)
   function updateBoard(){
     board.forEach((element, index) => {
       if (element === 1){
-        squareEls[index].textContent = 'x'
+        squareEls[index].textContent = 'X'
       }if (element === -1){
-        squareEls[index].textContent = 'o'
+        squareEls[index].textContent = 'O'
       }if (element === null){
         squareEls[index].textContent = ''
       }
