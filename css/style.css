@@ -56,6 +56,13 @@ section.board {
 #sq0, #sq2, #sq4, #sq6, #sq8 {
   background-color: rgba(240, 33, 157, 0.34);
 }
+/* #sq0 {
+  background-color: linear-grdient(70deg, blue, pink); */
+  /* background-color: rgba(240, 33, 157, 0.34); */
+/* } */
+/* #sq0, #sq2, #sq4, #sq6, #sq8 {
+  background-color: ;(): rgba(240, 33, 157, 0.34);
+} */
 
 #overlay {
   position: fixed;
@@ -70,4 +77,19 @@ section.board {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+}
+
+footer > h2 {
+  margin-top: 5px
+}
+
+footer > div {
+  background-color: rgba(197, 77, 77, 0.372);
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.719);
+  border-radius: 5%;
+}
+
+#resetGame {
+  margin-bottom: 20px;
 }
