@@ -11,12 +11,7 @@ const winningCombos = [
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let board, turn, winner, tie
-let scoreBoard = {
-  player1Wins: 0,
-  player2Wins: 0,
-  ties: 0
-}
+let board, turn, winner, tie, line, player1, player2
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -24,9 +19,9 @@ let scoreBoard = {
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
 const resetBtn = document.getElementById('resetGame')
-const player1ScoreEl = document.getElementById('player1')
-const player2ScoreEl = document.getElementById('player2')
-const tieScoreEl = document.getElementById('tie')
+const startBtn = document.querySelector('startBtn')
+const player1NameBox = document.getElementById('player1Name')
+const player2NameBox = document.getElementById('player2Name')
 // console.log(messageEl)
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -35,25 +30,44 @@ squareEls.forEach(function(sqr){
   sqr.addEventListener('click', handleClick)
 })
 resetBtn.addEventListener('click', init)
+
+startBtn.addEventListener('click', function(evt){
+  const overlay = document.getElementById('overlay')
+  choosePlayerNames()
+  overlay.style.display = 'none'
+})
   
   /*-------------------------------- Functions --------------------------------*/
+
+  const choosePlayerNames = (evt) => {
+    // player1 = player1Name.value.trim(){}
+    if (player1NameBox.value.trim()){
+      player1.textContent = player1NameBox.value
+    } else if (player1NameBox.value === ('')){
+      player1 = 'Player 1'
+    }
+    if (player2NameBox.value.trim()){
+      player1.textContent = player2NameBox.value
+    } else if (player2NameBox.value === ('')){
+      player2 = 'Player 2'
+    }
+  }
 
   function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
-    messageEl.classList.remove('animate__animated', 'animate__tada')
+    choosePlayerNames()
     render()
   }
 
-  init()
+  choosePlayerNames()
   
   function render(){
     console.log('BAM! Rendered')
     updateMessage()
     updateBoard()
-    updateScoreBoard()
   }
   
   function updateBoard(){
@@ -94,7 +108,7 @@ function handleClick(evt){
     placePiece(sqIdx)
     checkForTie()
     checkForWinner()
-    celebrate()
+    winLine()
     switchPlayerTurn()
     render()
   }
@@ -108,35 +122,21 @@ function handleClick(evt){
       tie = false
     } else {
       tie = true
-      scoreBoard.ties++
     }
   }
 
   function checkForWinner(){
     for (let i = 0; i < winningCombos.length; i++) {
-    const weHaveAWinner = (Math.abs(
+      if (Math.abs(
       board[winningCombos[i][0]]+
       board[winningCombos[i][1]]+
-      board[winningCombos[i][2]]) === 3)
-      if (weHaveAWinner){
+      board[winningCombos[i][2]]) === 3){
         winner = true
-      } if (winner === true && turn === 1) {
-        scoreBoard.player1Wins++
-      } if (winner === true && turn === -1)  {
-        scoreBoard.player2Wins++
       }
-    }
-}
-
-  function celebrate(){
-    if (winner === true){
-      confetti.start(1000)
-      messageEl.classList.add('animate__animated', 'animate__tada')
-      
     }
   }
   
-  function switchPlayerTurn(){
+function switchPlayerTurn(){
   if (winner === true){
     return
   } else {
@@ -144,8 +144,8 @@ function handleClick(evt){
   }
 }
 
-function updateScoreBoard(){
-  player1ScoreEl.textContent = `Player 1: ${scoreBoard.player1Wins}`
-  player2ScoreEl.textContent = `Player 2: ${scoreBoard.player2Wins}`
-  tieScoreEl.textContent = `Ties: ${scoreBoard.ties}`
+function winLine(){
+  if (winner === true){
+    console.log('line')
+  }
 }
