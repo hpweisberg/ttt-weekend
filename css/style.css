@@ -28,6 +28,11 @@ section.board {
   /* border-radius: 35% */
 }
 
+.sqr:hover {
+  color: 1px solid rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
 .sqr:nth-child(-n + 3) {
     border-top: none;
 } 
@@ -58,4 +63,11 @@ section.board {
   width: 400px;
   background-color: rgb(75, 133, 234);
   border-radius: 5%;
+}
+
+.scoreDisplay {
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }

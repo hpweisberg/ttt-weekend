@@ -53,7 +53,6 @@ resetBtn.addEventListener('click', init)
     console.log('BAM! Rendered')
     updateMessage()
     updateBoard()
-    updateScoreBoard()
   }
   
   function updateBoard(){
@@ -94,6 +93,8 @@ function handleClick(evt){
     placePiece(sqIdx)
     checkForTie()
     checkForWinner()
+    incrementScoreBoard()
+    updateScoreBoard()
     celebrate()
     switchPlayerTurn()
     render()
@@ -114,25 +115,35 @@ function handleClick(evt){
 
   function checkForWinner(){
     for (let i = 0; i < winningCombos.length; i++) {
-    const weHaveAWinner = (Math.abs(
+      if (Math.abs(
       board[winningCombos[i][0]]+
       board[winningCombos[i][1]]+
-      board[winningCombos[i][2]]) === 3)
-      if (weHaveAWinner){
+      board[winningCombos[i][2]]) === 3){
         winner = true
-      } if (winner === true && turn === 1) {
-        scoreBoard.player1Wins++
-      } if (winner === true && turn === -1)  {
-        scoreBoard.player2Wins++
-      }
     }
-}
+  }}
+
+
+//   function checkForWinner(){
+//     for (let i = 0; i < winningCombos.length; i++) {
+//     const weHaveAWinner = (Math.abs(
+//       board[winningCombos[i][0]]+
+//       board[winningCombos[i][1]]+
+//       board[winningCombos[i][2]]) === 3)
+//       if (weHaveAWinner){
+//         winner = true
+//       } if (winner === true && turn === 1) {
+//         scoreBoard.player1Wins++
+//       } if (winner === true && turn === -1)  {
+//         scoreBoard.player2Wins++
+//       }
+//     }
+// }
 
   function celebrate(){
     if (winner === true){
       confetti.start(1000)
       messageEl.classList.add('animate__animated', 'animate__tada')
-      
     }
   }
   
@@ -143,6 +154,17 @@ function handleClick(evt){
     turn *= -1
   }
 }
+
+function incrementScoreBoard(){
+  if(winner === false){
+    return
+  }
+  if (winner === true && turn === 1){
+  scoreBoard.player1Wins++
+} if (winner === true && turn === -1){
+  scoreBoard.player2Wins++
+}
+} 
 
 function updateScoreBoard(){
   player1ScoreEl.textContent = `Player 1: ${scoreBoard.player1Wins}`
