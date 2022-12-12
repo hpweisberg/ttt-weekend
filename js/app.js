@@ -128,6 +128,7 @@ function handleClick(evt){
     if (winner === true){
       confetti.start(1000)
       messageEl.classList.add('animate__animated', 'animate__tada')
+      board
     }
   }
   

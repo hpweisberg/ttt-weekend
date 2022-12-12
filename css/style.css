@@ -84,7 +84,7 @@ footer > h2 {
 }
 
 footer > div {
-  background-color: rgba(197, 77, 77, 0.372);
+  background-color: #80CED7;
   padding: 10px 20px;
   border: 1px solid rgba(0, 0, 0, 0.719);
   border-radius: 5%;
@@ -92,4 +92,8 @@ footer > div {
 
 #resetGame {
   margin-bottom: 20px;
+  padding: 5px;
+  background-color: #854b8c;
+  color: aliceblue;
+  cursor: pointer;
 }
