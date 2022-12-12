@@ -1,3 +1,5 @@
+
+
 body {
     background-color: #f2a5cd;
 	/* Use a system font, if none are available use an available sans-sarif   font */
@@ -20,11 +22,11 @@ section.board {
 }
 
 .sqr {
-  border: 3px solid #80CED7;
+  border: 2.8px solid #80CED7;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
-  outline-width: 1ch;
+  outline-width: 2ch;
   /* border-radius: 35% */
 }
 
@@ -77,6 +79,7 @@ section.board {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  font-size: 18px;
 }
 
 footer > h2 {
@@ -100,5 +103,15 @@ footer > div {
 
 #slash {
   position: absolute;
+  stroke: 1px;
+  width: 5px;
+  color: black;
+  height: 5px;
 }
 
+span {
+  position: absolute;
+  text-align: right;
+  align-items: right;
+  vertical-align: right;
+}
