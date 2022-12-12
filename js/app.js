@@ -18,7 +18,6 @@ let scoreBoard = {
   ties: 0
 }
 
-
 /*------------------------ Cached Element References ------------------------*/
 
 const squareEls = document.querySelectorAll('.sqr')
@@ -27,7 +26,7 @@ const resetBtn = document.getElementById('resetGame')
 const player1ScoreEl = document.getElementById('player1')
 const player2ScoreEl = document.getElementById('player2')
 const tieScoreEl = document.getElementById('tie')
-// console.log(messageEl)
+const gameBoardEl = document.querySelector('.board')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -50,7 +49,6 @@ resetBtn.addEventListener('click', init)
   init()
   
   function render(){
-    console.log('BAM! Rendered')
     updateMessage()
     updateBoard()
   }
@@ -64,7 +62,7 @@ resetBtn.addEventListener('click', init)
       }if (element === null){
         squareEls[index].textContent = ''
       }
-    });
+    })
   }
   
   function updateMessage(){
@@ -121,14 +119,14 @@ function handleClick(evt){
       board[winningCombos[i][2]]) === 3){
         winner = true
     }
-  }}
+  }
+}
 
 
   function celebrate(){
     if (winner === true){
       confetti.start(1000)
       messageEl.classList.add('animate__animated', 'animate__tada')
-      board
     }
   }
   
