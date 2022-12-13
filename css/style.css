@@ -66,8 +66,8 @@ section.board {
 
 #overlay {
   position: fixed;
-  height: 550px;
-  width: 400px;
+  height: 90%;
+  width: 90%;
   background-color: rgb(75, 133, 234);
   border-radius: 5%;
 }
