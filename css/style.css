@@ -63,13 +63,6 @@ section.board {
   background-color: rgba(240, 33, 157, 0.34);
   
 }
-/* #sq0 {
-  background-color: linear-grdient(70deg, blue, pink); */
-  /* background-color: rgba(240, 33, 157, 0.34); */
-/* } */
-/* #sq0, #sq2, #sq4, #sq6, #sq8 {
-  background-color: ;(): rgba(240, 33, 157, 0.34);
-} */
 
 #overlay {
   position: fixed;
@@ -114,9 +107,13 @@ footer > div {
   height: 5px;
 }
 
-span {
-  position: absolute;
-  text-align: right;
-  align-items: right;
-  vertical-align: right;
+.scoreboard-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.player-1-score-div, .player-2-score-div, .tie-score-div {
+  display: flex;
+  justify-content: space-between;
 }

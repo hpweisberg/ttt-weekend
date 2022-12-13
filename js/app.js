@@ -23,9 +23,12 @@ let scoreBoard = {
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
 const resetBtn = document.getElementById('resetGame')
-const player1ScoreEl = document.getElementById('player1')
-const player2ScoreEl = document.getElementById('player2')
-const tieScoreEl = document.getElementById('tie')
+const player1NameEl = document.getElementById('player1')
+const player2NameEl = document.getElementById('player2')
+const tieEl = document.getElementById('tie')
+const player1ScoreEl = document.getElementById('player1Score')
+const player2ScoreEl = document.getElementById('player2Score')
+const tieScoreEl = document.getElementById('tieScore')
 const gameBoardEl = document.querySelector('.board')
 const overlay = document.getElementById('overlay')
 const player1NameBox = document.getElementById('player1Name')
@@ -177,8 +180,10 @@ function incrementScoreBoard(){
 
 function updateScoreBoard(){
   choosePlayerNames()
-  player1ScoreEl.textContent = `${player1}: ${scoreBoard.player1Wins}`
-  player2ScoreEl.textContent = `${player2}: ${scoreBoard.player2Wins}`
-  tieScoreEl.textContent = `Ties: ${scoreBoard.ties}`
+  player1NameEl.textContent = `${player1}:`
+  player1ScoreEl.textContent = `${scoreBoard.player1Wins}`
+  player2NameEl.textContent = `${player2}:`
+  player2ScoreEl.textContent = `${scoreBoard.player2Wins}`
+  tieEl.textContent = `Ties:`
+  tieScoreEl.textContent = `${scoreBoard.ties}`
 }
-
