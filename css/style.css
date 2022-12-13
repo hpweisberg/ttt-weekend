@@ -72,6 +72,11 @@ section.board {
   border-radius: 5%;
 }
 
+#overlay button {
+  border-radius: 15%;
+  background-color: rgb(246, 169, 215) 
+}
+
 footer h2 {
   margin-top: 5px;
 }
