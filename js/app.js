@@ -64,7 +64,6 @@ startBtn.addEventListener('click', function(evt){
     } else {
       player2 = `Player 2`
     }
-    // player2 = player2NameBox.value
   }
   
   init()
@@ -74,8 +73,6 @@ startBtn.addEventListener('click', function(evt){
     turn = 1
     winner = false
     tie = false
-    // player1 = `Player 1`
-    // player2 = 'Player 2'
     choosePlayerNames()
     messageEl.classList.remove('animate__animated', 'animate__tada')
     render()
@@ -171,11 +168,11 @@ function incrementScoreBoard(){
   if(winner === false){
     return
   }
-  if (winner === true && turn === 1){
+    if (winner === true && turn === 1){
   scoreBoard.player1Wins++
-} if (winner === true && turn === -1){
+  } if (winner === true && turn === -1){
   scoreBoard.player2Wins++
-}
+  }
 } 
 
 function updateScoreBoard(){
