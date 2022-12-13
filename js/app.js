@@ -49,20 +49,6 @@ startBtn.addEventListener('click', function(evt){
   const choosePlayerNames = (evt) => {
     player1 = player1NameBox.value
     player2 = player2NameBox.value
-    // console.log(player1)
-    // console.log(player2)
-
-    // player1 = player1Name.value.trim(){}
-    // if (player1NameBox.value.trim()){
-    //   player1.textContent = player1NameBox.value
-    // } else if (player1NameBox.value === ('')){
-    //   player1 = 'Player 1'
-    // }
-    // if (player2NameBox.value.trim()){
-    //   player1.textContent = player2NameBox.value
-    // } else if (player2NameBox.value === ('')){
-    //   player2 = 'Player 2'
-    // }
   }
 
 
@@ -73,6 +59,7 @@ startBtn.addEventListener('click', function(evt){
     tie = false
     player1 = 'Player 1'
     player2 = 'Player 2'
+    choosePlayerNames()
     messageEl.classList.remove('animate__animated', 'animate__tada')
     render()
   }
@@ -98,17 +85,12 @@ startBtn.addEventListener('click', function(evt){
   
   function updateMessage(){
     
-      // if(turn === 1){
-      //   person = 'Player 1'
-      // } else {
-      //   person = 'Player 2'
-      // }
     if (winner === false && tie === false){
       messageEl.textContent = `It's ${turn === 1 ? player1 : player2}'s turn`
     } else if(winner === false && tie === true){
       messageEl.textContent = `It's a Tie`
     } else {
-      messageEl.textContent = `Winner Winner Chicken Dinner! ${person} Wins!`
+      messageEl.textContent = `Winner Winner Chicken Dinner! ${turn === 1 ? player1 : player2} Wins!`
     }
   }
   
@@ -181,8 +163,8 @@ function incrementScoreBoard(){
 } 
 
 function updateScoreBoard(){
-  player1ScoreEl.textContent = `Player 1: ${scoreBoard.player1Wins}`
-  player2ScoreEl.textContent = `Player 2: ${scoreBoard.player2Wins}`
+  player1ScoreEl.textContent = `${player1}: ${scoreBoard.player1Wins}`
+  player2ScoreEl.textContent = `${player2}: ${scoreBoard.player2Wins}`
   tieScoreEl.textContent = `Ties: ${scoreBoard.ties}`
 }
 
