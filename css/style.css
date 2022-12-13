@@ -16,6 +16,8 @@ body {
 
 section.board {
   display: grid;
+  border-color: aliceblue;
+  border-width: 5px;
   grid-template-rows: repeat(3, 11vmin);
   grid-template-columns: repeat(3, 11vmin);
   grid-gap: 0vmin;
@@ -53,10 +55,13 @@ section.board {
 
 #resetGame {
   margin-top: 20px;
+  border-radius: 15%;
 }
+
 
 #sq0, #sq2, #sq4, #sq6, #sq8 {
   background-color: rgba(240, 33, 157, 0.34);
+  
 }
 /* #sq0 {
   background-color: linear-grdient(70deg, blue, pink); */
@@ -74,6 +79,9 @@ section.board {
   border-radius: 5%;
 }
 
+footer h2 {
+  margin-top: 5px;
+}
 .scoreDisplay {
   text-align: left;
   align-items: center;
@@ -82,15 +90,12 @@ section.board {
   font-size: 18px;
 }
 
-footer > h2 {
-  margin-top: 5px
-}
-
 footer > div {
   background-color: #80CED7;
   padding: 10px 20px;
   border: 1px solid rgba(0, 0, 0, 0.719);
   border-radius: 5%;
+  
 }
 
 #resetGame {

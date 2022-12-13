@@ -11,7 +11,7 @@ const winningCombos = [
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let board, turn, winner, tie
+let board, turn, winner, tie, player1, player2
 let scoreBoard = {
   player1Wins: 0,
   player2Wins: 0,
@@ -27,6 +27,10 @@ const player1ScoreEl = document.getElementById('player1')
 const player2ScoreEl = document.getElementById('player2')
 const tieScoreEl = document.getElementById('tie')
 const gameBoardEl = document.querySelector('.board')
+const overlay = document.getElementById('overlay')
+const player1NameBox = document.getElementById('player1Name')
+const player2NameBox = document.getElementById('player2Name')
+const startBtn = document.getElementById('start-btn')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -34,14 +38,41 @@ squareEls.forEach(function(sqr){
   sqr.addEventListener('click', handleClick)
 })
 resetBtn.addEventListener('click', init)
+
+startBtn.addEventListener('click', function(evt){
+  choosePlayerNames()
+  render()
+  overlay.style.display = 'none'
+})
   
   /*-------------------------------- Functions --------------------------------*/
+  const choosePlayerNames = (evt) => {
+    player1 = player1NameBox.value
+    player2 = player2NameBox.value
+    // console.log(player1)
+    // console.log(player2)
+
+    // player1 = player1Name.value.trim(){}
+    // if (player1NameBox.value.trim()){
+    //   player1.textContent = player1NameBox.value
+    // } else if (player1NameBox.value === ('')){
+    //   player1 = 'Player 1'
+    // }
+    // if (player2NameBox.value.trim()){
+    //   player1.textContent = player2NameBox.value
+    // } else if (player2NameBox.value === ('')){
+    //   player2 = 'Player 2'
+    // }
+  }
+
 
   function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
+    player1 = 'Player 1'
+    player2 = 'Player 2'
     messageEl.classList.remove('animate__animated', 'animate__tada')
     render()
   }
@@ -66,14 +97,14 @@ resetBtn.addEventListener('click', init)
   }
   
   function updateMessage(){
-    let person = ''
-      if(turn === 1){
-        person = 'Player 1'
-      } else {
-        person = 'Player 2'
-      }
+    
+      // if(turn === 1){
+      //   person = 'Player 1'
+      // } else {
+      //   person = 'Player 2'
+      // }
     if (winner === false && tie === false){
-      messageEl.textContent = `It's ${person}'s turn`
+      messageEl.textContent = `It's ${turn === 1 ? player1 : player2}'s turn`
     } else if(winner === false && tie === true){
       messageEl.textContent = `It's a Tie`
     } else {
@@ -154,3 +185,4 @@ function updateScoreBoard(){
   player2ScoreEl.textContent = `Player 2: ${scoreBoard.player2Wins}`
   tieScoreEl.textContent = `Ties: ${scoreBoard.ties}`
 }
+
