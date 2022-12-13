@@ -31,6 +31,9 @@ const overlay = document.getElementById('overlay')
 const player1NameBox = document.getElementById('player1Name')
 const player2NameBox = document.getElementById('player2Name')
 const startBtn = document.getElementById('start-btn')
+const player1ScoreCountEl = document.getElementById('player1Score')
+const player2ScoreCountEl = document.getElementById('player2Score')
+const tieScoreCountEl = document.getElementById('tieScore')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -41,30 +44,40 @@ resetBtn.addEventListener('click', init)
 
 startBtn.addEventListener('click', function(evt){
   choosePlayerNames()
+  updateScoreBoard()
   render()
   overlay.style.display = 'none'
 })
   
   /*-------------------------------- Functions --------------------------------*/
   const choosePlayerNames = (evt) => {
-    player1 = player1NameBox.value
-    player2 = player2NameBox.value
+    if (player1NameBox.value.length > 0){
+      player1 = player1NameBox.value
+    } else {
+      player1 = `Player 1`
+    }
+    if (player2NameBox.value.length > 0){
+      player2 = player2NameBox.value
+    } else {
+      player2 = `Player 2`
+    }
+    // player2 = player2NameBox.value
   }
-
+  
+  init()
 
   function init(){
     board = [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = false
     tie = false
-    player1 = 'Player 1'
-    player2 = 'Player 2'
+    // player1 = `Player 1`
+    // player2 = 'Player 2'
     choosePlayerNames()
     messageEl.classList.remove('animate__animated', 'animate__tada')
     render()
   }
 
-  init()
   
   function render(){
     updateMessage()
@@ -163,6 +176,7 @@ function incrementScoreBoard(){
 } 
 
 function updateScoreBoard(){
+  choosePlayerNames()
   player1ScoreEl.textContent = `${player1}: ${scoreBoard.player1Wins}`
   player2ScoreEl.textContent = `${player2}: ${scoreBoard.player2Wins}`
   tieScoreEl.textContent = `Ties: ${scoreBoard.ties}`
